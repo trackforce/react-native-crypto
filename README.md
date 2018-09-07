@@ -1,6 +1,6 @@
 # React Native Crypto
-
 Common encryption/decryption for react-native
+
 
 ## Installation
 ```sh
@@ -56,64 +56,31 @@ protected List<ReactPackage> getPackages() {
 }
 ```
 
+## Local development
+
+1. `yarn install`
+2. `yarn link`
+3. `cd example`
+4. `yarn install`
+5. `yarn link @trackforce/react-native-crypto`
+6. `yarn run-ios`
+
+
+
 ## Usage
 
 ### Example
 
-```js
-import Crypto from '@trackforce/react-native-crypto';
-
-function generateKey(password, salt) {
-    return Crypto.pbkdf2(password, salt, 5000, 32, 'sha512');
-}
-
-async function encrypt(text, key) {
-    const iv = 'base 64 random 16 bytes string';
-    try {
-        const ciphertext = await Crypto.aesEncrypt(text, key, iv);
-        return { ciphertext, iv };
-    } catch (error) {
-        throw error;
-    }
-}
-
-function decrypt(ciphertext, key, iv) {
-    return Crypto.aesDecrypt(ciphertext, key, iv);
-}
-
-function hmac(ciphertext, key) {
-    return Crypto.hmac256(ciphertext, key);
-}
-
-(async () => {
-    try {
-        const generatedKey = await generateKey('password', 'salt');
-        console.log(`generatedKey: ${generatedKey}`);
-
-        const { ciphertext, iv } = await encrypt('Hello, world!', generatedKey);
-        console.log(`ciphertext: ${ciphertext}, iv: ${iv}`);
-
-        const decryptedText = await decrypt(ciphertext, generatedKey, iv);
-        console.log(`decrypted: ${decryptedText}`);
-
-        const hash = await hmac(ciphertext, generatedKey);
-        console.log(`hash: ${hash}`);
-    } catch (error) {
-        throw error;
-    }
-})();
-```
+See example App.tsx for usagee
 
 ### methods
 
 ```js
-declare module '@trackforce/react-native-crypto' {
-  function pbkdf2(password: string, salt: string, iterations: number, keyLen: number, hash: 'sha1' | 'sha512'): Promise<string>;
-  function aesEncrypt(text: string, key: string, iv: string): Promise<string>;
-  function aesDecrypt(ciphertext: string, key: string, iv: string): Promise<string>;
-  function hmac256(ciphertext: string, key: string): Promise<string>;
-  function sha1(text: string): Promise<string>;
-  function sha256(text: string): Promise<string>;
-  function sha512(text: string): Promise<string>;
-}
+function pbkdf2(password: string, salt: string, iterations: number, keyLen: number, hash: 'sha1' | 'sha512'): Promise<string>;
+function aesEncrypt(text: string, key: string, iv: string): Promise<string>;
+function aesDecrypt(ciphertext: string, key: string, iv: string): Promise<string>;
+function hmac256(ciphertext: string, key: string): Promise<string>;
+function sha1(text: string): Promise<string>;
+function sha256(text: string): Promise<string>;
+function sha512(text: string): Promise<string>;
 ```
