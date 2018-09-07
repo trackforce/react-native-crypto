@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Platform, StyleSheet, Text, View } from 'react-native';
+import Crypto from '@trackforce/react-native-crypto';
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
@@ -9,6 +10,12 @@ const instructions = Platform.select({
 });
 
 export default class App extends Component {
+
+  async componentDidMount() {
+    const sha1 = await Crypto.sha1('test');
+    console.log('sha1', sha1);
+  }
+
   render() {
     return (
       <View style={styles.container}>

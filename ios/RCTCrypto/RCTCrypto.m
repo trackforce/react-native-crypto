@@ -1,7 +1,7 @@
-#import "RCTAes.h"
+#import "RCTCrypto.h"
 #import "AesCrypt.h"
 
-@implementation RCTAes
+@implementation RCTCrypto
 
 RCT_EXPORT_MODULE()
 
