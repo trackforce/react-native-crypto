@@ -1,0 +1,35 @@
+{
+    "name": "@trackforce/react-native-crypto",
+    "version": "0.0.1",
+    "description": "React-native crypto module",
+    "main": "index.js",
+    "types": "./typings/react-native-crypto.d.ts",
+    "author": "trackforce",
+    "license": "MIT",
+    "keywords": [
+        "react-native",
+        "react-component",
+        "ios",
+        "android",
+        "aes",
+        "crypto",
+        "mobile",
+        "async",
+        "sha1",
+        "sha256",
+        "sha512",
+        "pbkdf2",
+        "hmac256"
+    ],
+    "homepage": "https://github.com/trackforce/react-native-crypto",
+    "bugs": {
+        "url": "https://github.com/trackforce/react-native-crypto/issues"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/trackforce/react-native-crypto.git"
+    },
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    }
+}
