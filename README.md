@@ -19,8 +19,8 @@ react-native link
 #### iOS
 * See [Linking Libraries](http://facebook.github.io/react-native/docs/linking-libraries-ios.html)
 OR
-* Drag RCTAes.xcodeproj to your project on Xcode.
-* Click on your main project file (the one that represents the .xcodeproj) select Build Phases and drag libRCTAes.a from the Products folder inside the RCTAes.xcodeproj.
+* Drag RCTCrypto.xcodeproj to your project on Xcode.
+* Click on your main project file (the one that represents the .xcodeproj) select Build Phases and drag libRCTCrypto.a from the Products folder inside the RCTCrypto.xcodeproj.
 
 #### (Android)
 
@@ -44,14 +44,14 @@ dependencies {
 
 ```java
 ......
-import com.trackforce.aes.RCTAesPackage;
+import com.trackforce.aes.RCTCryptoPackage;
 
 ......
 
 @Override
 protected List<ReactPackage> getPackages() {
    ......
-   new RCTAesPackage(),
+   new RCTCryptoPackage(),
    ......
 }
 ```

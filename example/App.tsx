@@ -6,18 +6,24 @@ declare var console: any;
 export default class App extends Component {
 
   async componentDidMount() {
-    const key = await Crypto.pbkdf2('pswd', 'a1b4efst', 4096, 32, 'SHA1');
-    console.log(`pbkdf2 key: ${key}`);
+    try {
+      const iterations = 4096;
+      const keyInBytes = 32;
+      const key = await Crypto.pbkdf2('a0', 'a1b4efst', iterations, keyInBytes, 'SHA1');
+      console.log(`pbkdf2 key: ${key}`);
 
-    const iv = 'base 64 random 16 bytes string';
-    const ciphertext = await Crypto.aesEncrypt('data to encrypt', key, iv);
-    console.log(`aesEncrypt: ${ciphertext}`);
+      const iv = null; // or base 64 encoded 16 bytes random string
+      const ciphertext = await Crypto.aesEncrypt('data to encrypt', key, iv);
+      console.log(`aesEncrypt: ${ciphertext}`);
 
-    const decryptedText = await Crypto.aesDecrypt(ciphertext, key, iv);;
-    console.log(`aesDecrypt: ${decryptedText}`);
+      const decryptedText = await Crypto.aesDecrypt(ciphertext, key, iv);
+      console.log(`aesDecrypt: ${decryptedText}`);
 
-    const hash = await Crypto.hmac256(ciphertext, key);
-    console.log(`hmac256: ${hash}`);
+      const hash = await Crypto.hmac256(ciphertext, key);
+      console.log(`hmac256: ${hash}`);
+    } catch (err) {
+      console.log('err', err);
+    }
   }
 
   render() {
