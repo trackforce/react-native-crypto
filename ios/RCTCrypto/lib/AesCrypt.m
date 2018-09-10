@@ -26,13 +26,23 @@
     return data;
 }
 
-+ (NSString *) pbkdf2:(NSString *)password salt: (NSString *)salt {
++ (NSString *) pbkdf2:(NSString *)password salt: (NSString *)salt iterations: (int)iterations keyLen: (int)keyLen hash: (NSString *)hash  {
     // Data of String to generate Hash key(hexa decimal string).
     NSData *passwordData = [password dataUsingEncoding:NSUTF8StringEncoding];
     NSData *saltData = [salt dataUsingEncoding:NSUTF8StringEncoding];
 
     // Hash key (hexa decimal) string data length.
-    NSMutableData *hashKeyData = [NSMutableData dataWithLength:CC_SHA512_DIGEST_LENGTH];
+    NSMutableData *hashKeyData = [NSMutableData dataWithLength:keyLen];
+    
+    NSDictionary *algMap = @{
+     @"SHA1" : [NSNumber numberWithInt:kCCPRFHmacAlgSHA1],
+     @"SHA224" : [NSNumber numberWithInt:kCCPRFHmacAlgSHA224],
+     @"SHA256" : [NSNumber numberWithInt:kCCPRFHmacAlgSHA256],
+     @"SHA384" : [NSNumber numberWithInt:kCCPRFHmacAlgSHA384],
+     @"SHA512" : [NSNumber numberWithInt:kCCPRFHmacAlgSHA512],
+    };
+    
+    int alg = [[algMap valueForKey:hash] intValue];
 
     // Key Derivation using PBKDF2 algorithm.
     int status = CCKeyDerivationPBKDF(
@@ -41,8 +51,8 @@
                     passwordData.length,
                     saltData.bytes,
                     saltData.length,
-                    kCCPRFHmacAlgSHA512,
-                    5000,
+                    alg,
+                    iterations,
                     hashKeyData.mutableBytes,
                     hashKeyData.length);
 

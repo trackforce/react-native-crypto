@@ -1,6 +1,5 @@
 declare module '@trackforce/react-native-crypto' {
-  function pbkdf2(password: string, salt: string): Promise<string>;
-  function todoPbkdf2(password: string, salt: string, iterations: number, keyLen: number, hash: 'sha1' | 'sha512'): Promise<string>;
+  function pbkdf2(password: string, salt: string, iterations: number, keyLen: number, hash: 'SHA1' | 'SHA224' | 'SHA256' | 'SHA384' | 'SHA512'): Promise<string>;
   function aesEncrypt(text: string, key: string, iv: string): Promise<string>;
   function aesDecrypt(ciphertext: string, key: string, iv: string): Promise<string>;
   function hmac256(ciphertext: string, key: string): Promise<string>;

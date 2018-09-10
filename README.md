@@ -66,21 +66,12 @@ protected List<ReactPackage> getPackages() {
 6. `yarn run-ios`
 
 
-
 ## Usage
 
 ### Example
 
-See example App.tsx for usagee
+See example App.tsx for usage
 
 ### methods
 
-```js
-function pbkdf2(password: string, salt: string, iterations: number, keyLen: number, hash: 'sha1' | 'sha512'): Promise<string>;
-function aesEncrypt(text: string, key: string, iv: string): Promise<string>;
-function aesDecrypt(ciphertext: string, key: string, iv: string): Promise<string>;
-function hmac256(ciphertext: string, key: string): Promise<string>;
-function sha1(text: string): Promise<string>;
-function sha256(text: string): Promise<string>;
-function sha512(text: string): Promise<string>;
-```
+See Typescript typings
