@@ -1,3 +1,5 @@
+[![npm version](https://badge.fury.io/js/%40trackforce%2Freact-native-crypto.svg)](https://badge.fury.io/js/%40trackforce%2Freact-native-crypto)
+
 # React Native Crypto
 Common encryption/decryption for react-native
 
