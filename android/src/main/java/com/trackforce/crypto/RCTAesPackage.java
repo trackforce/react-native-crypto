@@ -1,4 +1,4 @@
-package com.trackforce.aes;
+package com.trackforce.crypto;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -10,13 +10,13 @@ import com.facebook.react.bridge.NativeModule;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.uimanager.ViewManager;
 
-import com.trackforce.aes.RCTCrypto;
+import com.trackforce.crypto.RCTAes;
 
-public class RCTCryptoPackage implements ReactPackage {
+public class RCTAesPackage implements ReactPackage {
     @Override
     public List<NativeModule> createNativeModules(ReactApplicationContext reactContext) {
         return Arrays.<NativeModule>asList(
-                new RCTCrypto(reactContext)
+                new RCTAes(reactContext)
         );
     }
 

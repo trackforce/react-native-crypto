@@ -7,9 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		32D980E11BE9F11C00FA27E5 /* RCTCrypto.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 32D980E01BE9F11C00FA27E5 /* RCTCrypto.h */; };
-		32D980E31BE9F11C00FA27E5 /* RCTCrypto.m in Sources */ = {isa = PBXBuildFile; fileRef = 32D980E21BE9F11C00FA27E5 /* RCTCrypto.m */; };
-		9BE20B5B1E4E1A3700696172 /* AesCrypt.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BE20B5A1E4E1A3700696172 /* AesCrypt.m */; };
+		9668CE0421471DE0001D58C3 /* Aes.m in Sources */ = {isa = PBXBuildFile; fileRef = 9668CE0221471DDF001D58C3 /* Aes.m */; };
+		9668CE0721471DEA001D58C3 /* RCTAes.m in Sources */ = {isa = PBXBuildFile; fileRef = 9668CE0621471DEA001D58C3 /* RCTAes.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -19,7 +18,6 @@
 			dstPath = "include/$(PRODUCT_NAME)";
 			dstSubfolderSpec = 16;
 			files = (
-				32D980E11BE9F11C00FA27E5 /* RCTCrypto.h in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -27,10 +25,10 @@
 
 /* Begin PBXFileReference section */
 		32D980DD1BE9F11C00FA27E5 /* libRCTCrypto.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libRCTCrypto.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		32D980E01BE9F11C00FA27E5 /* RCTCrypto.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RCTCrypto.h; sourceTree = "<group>"; };
-		32D980E21BE9F11C00FA27E5 /* RCTCrypto.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RCTCrypto.m; sourceTree = "<group>"; };
-		9BE20B591E4E1A3700696172 /* AesCrypt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AesCrypt.h; sourceTree = "<group>"; };
-		9BE20B5A1E4E1A3700696172 /* AesCrypt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AesCrypt.m; sourceTree = "<group>"; };
+		9668CE0221471DDF001D58C3 /* Aes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Aes.m; sourceTree = "<group>"; };
+		9668CE0321471DDF001D58C3 /* Aes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Aes.h; sourceTree = "<group>"; };
+		9668CE0521471DEA001D58C3 /* RCTAes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCTAes.h; sourceTree = "<group>"; };
+		9668CE0621471DEA001D58C3 /* RCTAes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCTAes.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,8 +61,8 @@
 		32D980DF1BE9F11C00FA27E5 /* RCTCrypto */ = {
 			isa = PBXGroup;
 			children = (
-				32D980E01BE9F11C00FA27E5 /* RCTCrypto.h */,
-				32D980E21BE9F11C00FA27E5 /* RCTCrypto.m */,
+				9668CE0521471DEA001D58C3 /* RCTAes.h */,
+				9668CE0621471DEA001D58C3 /* RCTAes.m */,
 				32D981161BE9F1B600FA27E5 /* lib */,
 			);
 			path = RCTCrypto;
@@ -73,8 +71,8 @@
 		32D981161BE9F1B600FA27E5 /* lib */ = {
 			isa = PBXGroup;
 			children = (
-				9BE20B591E4E1A3700696172 /* AesCrypt.h */,
-				9BE20B5A1E4E1A3700696172 /* AesCrypt.m */,
+				9668CE0321471DDF001D58C3 /* Aes.h */,
+				9668CE0221471DDF001D58C3 /* Aes.m */,
 			);
 			path = lib;
 			sourceTree = "<group>";
@@ -135,8 +133,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9BE20B5B1E4E1A3700696172 /* AesCrypt.m in Sources */,
-				32D980E31BE9F11C00FA27E5 /* RCTCrypto.m in Sources */,
+				9668CE0721471DEA001D58C3 /* RCTAes.m in Sources */,
+				9668CE0421471DE0001D58C3 /* Aes.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

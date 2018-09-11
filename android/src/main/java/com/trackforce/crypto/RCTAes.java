@@ -1,4 +1,4 @@
-package com.trackforce.aes;
+package com.trackforce.crypto;
 
 import android.widget.Toast;
 
@@ -46,19 +46,19 @@ import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
 import com.facebook.react.bridge.Callback;
 
-public class RCTCrypto extends ReactContextBaseJavaModule {
+public class RCTAes extends ReactContextBaseJavaModule {
 
     private static final String CIPHER_ALGORITHM = "AES/CBC/PKCS7Padding";
     public static final String HMAC_SHA_256 = "HmacSHA256";
     private static final String KEY_ALGORITHM = "AES";
 
-    public RCTCrypto(ReactApplicationContext reactContext) {
+    public RCTAes(ReactApplicationContext reactContext) {
         super(reactContext);
     }
 
     @Override
     public String getName() {
-        return "RCTCrypto";
+        return "RCTAes";
     }
 
     @ReactMethod

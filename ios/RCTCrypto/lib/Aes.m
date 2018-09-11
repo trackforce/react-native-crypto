@@ -2,9 +2,9 @@
 #import <CommonCrypto/CommonDigest.h>
 #import <CommonCrypto/CommonKeyDerivation.h>
 
-#import "AesCrypt.h"
+#import "Aes.h"
 
-@implementation AesCrypt
+@implementation Aes
 
 + (NSString *) toHex:(NSData *)nsdata {
     NSString * hexStr = [NSString stringWithFormat:@"%@", nsdata];
