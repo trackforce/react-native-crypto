@@ -26,10 +26,10 @@
     return data;
 }
 
-+ (NSString *) pbkdf2:(NSString *)password salt: (NSString *)salt iterations: (int)iterations keyLen: (int)keyLen hash: (NSString *)hash  {
++ (NSString *) pbkdf2:(NSString *)password saltBase64: (NSString *)saltBase64 iterations: (int)iterations keyLen: (int)keyLen hash: (NSString *)hash  {
     // Data of String to generate Hash key(hexa decimal string).
     NSData *passwordData = [password dataUsingEncoding:NSUTF8StringEncoding];
-    NSData *saltData = [salt dataUsingEncoding:NSUTF8StringEncoding];
+    NSData *saltData = [[NSData alloc]initWithBase64EncodedString:saltBase64 options:0];
 
     // Hash key (hexa decimal) string data length.
     NSMutableData *hashKeyData = [NSMutableData dataWithLength:keyLen];
