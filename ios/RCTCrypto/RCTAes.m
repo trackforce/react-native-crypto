@@ -1,5 +1,5 @@
 #import "RCTAes.h"
-#import "c.h"
+#import "Aes.h"
 
 @implementation RCTAes
 
