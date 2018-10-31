@@ -9,9 +9,9 @@
     "test": "jest"
   },
   "dependencies": {
+    "@trackforce/react-native-crypto": "file:..",
     "react": "16.4.1",
     "react-native": "0.55.4",
-    "@trackforce/react-native-crypto": "file:../",
     "tslib": "^1.9.3"
   },
   "devDependencies": {
