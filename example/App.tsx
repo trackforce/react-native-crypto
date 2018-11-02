@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import { Aes, Sha, Hmac, Pbkdf2 } from '@trackforce/react-native-crypto';
+import { Aes, Sha, Hmac, Pbkdf2, Rsa } from '@trackforce/react-native-crypto';
 declare var console: any;
 
 export default class App extends Component {
@@ -9,22 +9,34 @@ export default class App extends Component {
     try {
       const iterations = 4096;
       const keyInBytes = 32;
+      const message = 'data to encrypt';
       const key = await Pbkdf2.hash('a0', 'a1b4efst', iterations, keyInBytes, 'SHA1');
       console.log(`pbkdf2 key: ${key}`);
 
       const iv = null; // or base 64 encoded 16 bytes random string
-      const ciphertext = await Aes.encrypt('data to encrypt', key, iv);
-      console.log(`aesEncrypt: ${ciphertext}`);
+      const aesEncryptedMessage = await Aes.encrypt(message, key, iv);
+      console.log(`aes Encrypt: ${aesEncryptedMessage}`);
 
-      const decryptedText = await Aes.decrypt(ciphertext, key, iv);
-      console.log(`aesDecrypt: ${decryptedText}`);
+      const aesDecryptedMessage = await Aes.decrypt(aesEncryptedMessage, key, iv);
+      console.log(`aes Decrypt: ${aesDecryptedMessage}`);
 
-      const hash = await Hmac.hmac256(ciphertext, key);
-      console.log(`hmac256: ${hash}`);
+      const hmac256Hash = await Hmac.hmac256(message, key);
+      console.log(`hmac256: ${hmac256Hash}`);
 
       const sha1hash = await Sha.sha1("test");
       console.log(`sha1: ${sha1hash}`);
 
+      const rsaKeys = await Rsa.generateKeys(4096);
+      console.log('4096 private:', rsaKeys.private);
+      console.log('4096 public:', rsaKeys.public);
+      const rsaEncryptedMessage = await Rsa.encrypt(message, rsaKeys.public);
+      console.log('rsa Encrypt:', rsaEncryptedMessage);
+      const rsaSignature = await Rsa.sign(rsaEncryptedMessage, rsaKeys.private, 'SHA256');
+      console.log('rsa Signature:', rsaSignature);
+      const validSignature = await Rsa.verify(rsaSignature, rsaEncryptedMessage, rsaKeys.public, 'SHA256');
+      console.log('rsa signature verified:', validSignature);
+      const rsaDecryptedMessage = await Rsa.decrypt(rsaEncryptedMessage, rsaKeys.private);
+      console.log('rsa Decrypt:', rsaDecryptedMessage);
     } catch (err) {
       console.log('err', err);
     }

@@ -49,7 +49,6 @@ import com.facebook.react.bridge.Callback;
 public class RCTAes extends ReactContextBaseJavaModule {
 
     private static final String CIPHER_ALGORITHM = "AES/CBC/PKCS7Padding";
-    public static final String HMAC_SHA_256 = "HmacSHA256";
     private static final String KEY_ALGORITHM = "AES";
 
     public RCTAes(ReactApplicationContext reactContext) {
@@ -62,9 +61,9 @@ public class RCTAes extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public void aesEncrypt(String data, String keyBase64, String ivBase64, Promise promise) {
+    public void encrypt(String data, String keyBase64, String ivBase64, Promise promise) {
         try {
-            String result = aesEncrypt(data, keyBase64, ivBase64);
+            String result = encrypt(data, keyBase64, ivBase64);
             promise.resolve(result);
         } catch (Exception e) {
             promise.reject("-1", e.getMessage());
@@ -72,60 +71,10 @@ public class RCTAes extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public void aesDecrypt(String data, String pwd, String iv, Promise promise) {
+    public void decrypt(String data, String pwd, String iv, Promise promise) {
         try {
-            String strs = aesDecrypt(data, pwd, iv);
+            String strs = decrypt(data, pwd, iv);
             promise.resolve(strs);
-        } catch (Exception e) {
-            promise.reject("-1", e.getMessage());
-        }
-    }
-
-    @ReactMethod
-    public void pbkdf2(String pwd, String salt, Integer iterations, Integer keyLen, String hash, Promise promise) {
-        try {
-            String strs = pbkdf2(pwd, salt, iterations, keyLen, hash);
-            promise.resolve(strs);
-        } catch (Exception e) {
-            promise.reject("-1", e.getMessage());
-        }
-    }
-
-    @ReactMethod
-    public void hmac256(String data, String pwd, Promise promise) {
-        try {
-            String strs = hmac256(data, pwd);
-            promise.resolve(strs);
-        } catch (Exception e) {
-            promise.reject("-1", e.getMessage());
-        }
-    }
-
-    @ReactMethod
-    public void sha256(String data, Promise promise) {
-        try {
-            String result = shaX(data, "SHA-256");
-            promise.resolve(result);
-        } catch (Exception e) {
-            promise.reject("-1", e.getMessage());
-        }
-    }
-
-    @ReactMethod
-    public void sha1(String data, Promise promise) {
-        try {
-            String result = shaX(data, "SHA-1");
-            promise.resolve(result);
-        } catch (Exception e) {
-            promise.reject("-1", e.getMessage());
-        }
-    }
-
-    @ReactMethod
-    public void sha512(String data, Promise promise) {
-        try {
-            String result = shaX(data, "SHA-512");
-            promise.resolve(result);
         } catch (Exception e) {
             promise.reject("-1", e.getMessage());
         }
@@ -154,14 +103,6 @@ public class RCTAes extends ReactContextBaseJavaModule {
         }
     }
 
-    private String shaX(String data, String algorithm) throws Exception {
-        MessageDigest md = MessageDigest.getInstance(algorithm);
-        md.update(data.getBytes());
-        byte[] digest = md.digest();
-
-        return Base64.encodeToString(digest, Base64.DEFAULT);
-    }
-
     public static String bytesToHex(byte[] bytes) {
         final char[] hexArray = "0123456789abcdef".toCharArray();
         char[] hexChars = new char[bytes.length * 2];
@@ -173,33 +114,9 @@ public class RCTAes extends ReactContextBaseJavaModule {
         return new String(hexChars);
     }
 
-    private static String pbkdf2(String pwd, String salt, Integer iterations, Integer keyLen, String hash) throws NoSuchAlgorithmException, InvalidKeySpecException {
-        Map<String, ExtendedDigest> algMap = new HashMap<String, ExtendedDigest>();
-        algMap.put("SHA1", new SHA1Digest());
-        algMap.put("SHA224", new SHA224Digest());
-        algMap.put("SHA256", new SHA256Digest());
-        algMap.put("SHA384", new SHA384Digest());
-        algMap.put("SHA512", new SHA512Digest());
-        ExtendedDigest alg = algMap.get(hash);
-
-        PBEParametersGenerator gen = new PKCS5S2ParametersGenerator(alg);
-        gen.init(pwd.getBytes(StandardCharsets.UTF_8), salt.getBytes(StandardCharsets.UTF_8), iterations);
-        byte[] key = ((KeyParameter) gen.generateDerivedParameters(keyLen * 8)).getKey();
-        return bytesToHex(key);
-    }
-
-    private static String hmac256(String text, String key) throws NoSuchAlgorithmException, InvalidKeyException  {
-        byte[] contentData = text.getBytes(StandardCharsets.UTF_8);
-        byte[] akHexData = Hex.decode(key);
-        Mac sha256_HMAC = Mac.getInstance(HMAC_SHA_256);
-        SecretKey secret_key = new SecretKeySpec(akHexData, HMAC_SHA_256);
-        sha256_HMAC.init(secret_key);
-        return bytesToHex(sha256_HMAC.doFinal(contentData));
-    }
-
     final static IvParameterSpec emptyIvSpec = new IvParameterSpec(new byte[] {0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00});
 
-    private static String aesEncrypt(String text, String hexKey, String hexIv) throws Exception {
+    private static String encrypt(String text, String hexKey, String hexIv) throws Exception {
         if (text == null || text.length() == 0) {
             return null;
         }
@@ -213,7 +130,7 @@ public class RCTAes extends ReactContextBaseJavaModule {
         return Base64.encodeToString(encrypted, Base64.NO_WRAP);
     }
 
-    private static String aesDecrypt(String ciphertext, String hexKey, String hexIv) throws Exception {
+    private static String decrypt(String ciphertext, String hexKey, String hexIv) throws Exception {
         if(ciphertext == null || ciphertext.length() == 0) {
             return null;
         }
