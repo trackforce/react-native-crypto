@@ -16,7 +16,8 @@ public class RCTAesPackage implements ReactPackage {
                 new RCTAes(reactContext),
                 new RCTSha(reactContext),
                 new RCTHmac(reactContext),
-                new RCTPbkdf2(reactContext)
+                new RCTPbkdf2(reactContext),
+                new RCTRsa(reactContext)
         );
     }
 
