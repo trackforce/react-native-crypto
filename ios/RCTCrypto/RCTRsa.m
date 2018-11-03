@@ -94,21 +94,30 @@ RCT_EXPORT_METHOD(decrypt64:(NSString *)encodedMessage withKey:(NSString *)key r
 RCT_EXPORT_METHOD(sign:(NSString *)message withKey:(NSString *)key andHash:(NSString *)hash resolve:(RCTPromiseResolveBlock)resolve
                   rejecter:(RCTPromiseRejectBlock)reject) {
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        NSError *error = nil;
         Rsa *rsa = [[Rsa alloc] init];
         rsa.privateKey = key;
-        // Reject in case of Raw Hash and message length > key length
-        NSString *signature = [rsa sign:message withAlgorithm:[RCTRsa getAlgorithmFromHash:hash]];
-        resolve(signature);
+        NSString *signature = [rsa sign:message withAlgorithm:[RCTRsa getAlgorithmFromHash:hash] andError:&error];
+        if (error != nil) {
+            reject(@"error", error.localizedDescription, error);
+        } else {
+            resolve(signature);
+        }
     });
 }
 
 RCT_EXPORT_METHOD(sign64:(NSString *)message withKey:(NSString *)key andHash:(NSString *)hash resolve:(RCTPromiseResolveBlock)resolve
                   rejecter:(RCTPromiseRejectBlock)reject) {
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        NSError *error = nil;
         Rsa *rsa = [[Rsa alloc] init];
         rsa.privateKey = key;
-        NSString *signature = [rsa sign64:message withAlgorithm:[RCTRsa getAlgorithmFromHash:hash]];
-        resolve(signature);
+        NSString *signature = [rsa sign64:message withAlgorithm:[RCTRsa getAlgorithmFromHash:hash] andError:&error];
+        if (error != nil) {
+            reject(@"error", error.localizedDescription, error);
+        } else {
+            resolve(signature);
+        }
     });
 }
 

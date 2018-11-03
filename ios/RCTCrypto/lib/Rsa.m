@@ -154,20 +154,29 @@ typedef void (^SecKeyPerformBlock)(SecKeyRef key);
     return clearText;
 }
 
-- (NSString *)sign64:(NSString *)b64message withAlgorithm:(SecKeyAlgorithm)algorithm {
+- (NSString *)sign64:(NSString *)b64message withAlgorithm:(SecKeyAlgorithm)algorithm andError:(NSError **)anError {
     NSData *data = [[NSData alloc] initWithBase64EncodedString:b64message options:NSDataBase64DecodingIgnoreUnknownCharacters];
-    NSString *encodedSignature = [self _sign:data withAlgorithm:algorithm];
+    NSString *encodedSignature = [self _sign:data withAlgorithm:algorithm andError:anError];
     return encodedSignature;
 }
 
-- (NSString *)sign:(NSString *)message withAlgorithm:(SecKeyAlgorithm)algorithm {
+- (NSString *)sign:(NSString *)message withAlgorithm:(SecKeyAlgorithm)algorithm andError:(NSError **)anError {
     NSData* data = [message dataUsingEncoding:NSUTF8StringEncoding];
-    NSString *encodedSignature = [self _sign:data withAlgorithm:algorithm];
+    NSString *encodedSignature = [self _sign:data withAlgorithm:algorithm andError:anError];
     return encodedSignature;
 }
 
-- (NSString *)_sign:(NSData *)messageBytes withAlgorithm:(SecKeyAlgorithm)algorithm {
+- (NSString *)_sign:(NSData *)messageBytes withAlgorithm:(SecKeyAlgorithm)algorithm andError:(NSError **)anError {
     __block NSString *encodedSignature = nil;
+
+    if (algorithm == kSecKeyAlgorithmRSASignatureDigestPKCS1v15Raw && [self getKeyLength] < [messageBytes length]) {
+        NSDictionary *errorDetail = @{
+            NSLocalizedDescriptionKey: [NSString stringWithFormat:@"sign: Message length %lu is bigger than key length %lu",(unsigned long)[messageBytes length], (unsigned long)[self getKeyLength]]
+        };
+        *anError = [NSError errorWithDomain:@"react-native-crypto" code:0 userInfo:errorDetail];
+        return nil;
+    }
+
 
     void(^signer)(SecKeyRef) = ^(SecKeyRef privateKey) {
         BOOL canSign = SecKeyIsAlgorithmSupported(privateKey,
@@ -183,8 +192,8 @@ typedef void (^SecKeyPerformBlock)(SecKeyRef key);
                                                                          (__bridge CFDataRef)messageBytes,
                                                                          &error));
             if (!signature) {
-              NSError *err = CFBridgingRelease(error);
-              NSLog(@"error: %@", err);
+              *anError = CFBridgingRelease(error);
+              NSLog(@"error: %@", *anError);
             }
         }
 
@@ -192,6 +201,9 @@ typedef void (^SecKeyPerformBlock)(SecKeyRef key);
     };
 
     signer(self.privateKeyRef);
+    if (*anError != nil) {
+        return nil;
+    }
     return encodedSignature;
 }
 
@@ -243,6 +255,9 @@ typedef void (^SecKeyPerformBlock)(SecKeyRef key);
     return [RsaFormatter PEMFormattedPrivateKey:keyData];
 }
 
+- (NSUInteger) getKeyLength {
+    return SecKeyGetBlockSize(self.privateKeyRef); 
+}
 
 - (NSData *)dataForKey:(SecKeyRef)key {
     CFErrorRef error = NULL;
