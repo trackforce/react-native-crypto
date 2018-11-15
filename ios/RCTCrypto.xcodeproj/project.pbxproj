@@ -7,9 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		32D980E11BE9F11C00FA27E5 /* RCTCrypto.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 32D980E01BE9F11C00FA27E5 /* RCTCrypto.h */; };
-		32D980E31BE9F11C00FA27E5 /* RCTCrypto.m in Sources */ = {isa = PBXBuildFile; fileRef = 32D980E21BE9F11C00FA27E5 /* RCTCrypto.m */; };
-		9BE20B5B1E4E1A3700696172 /* AesCrypt.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BE20B5A1E4E1A3700696172 /* AesCrypt.m */; };
+		9643DA86218A0E3800535D00 /* Sha.m in Sources */ = {isa = PBXBuildFile; fileRef = 9643DA84218A0E3800535D00 /* Sha.m */; };
+		9643DA87218A0E3800535D00 /* Shared.m in Sources */ = {isa = PBXBuildFile; fileRef = 9643DA85218A0E3800535D00 /* Shared.m */; };
+		9643DA8A218A0E4400535D00 /* RCTSha.m in Sources */ = {isa = PBXBuildFile; fileRef = 9643DA89218A0E4400535D00 /* RCTSha.m */; };
+		9643DA8D218A5C4800535D00 /* RCTHmac.m in Sources */ = {isa = PBXBuildFile; fileRef = 9643DA8C218A5C4800535D00 /* RCTHmac.m */; };
+		9643DA90218A5C5200535D00 /* Hmac.m in Sources */ = {isa = PBXBuildFile; fileRef = 9643DA8F218A5C5200535D00 /* Hmac.m */; };
+		9643DA93218A65A900535D00 /* Pbkdf2.m in Sources */ = {isa = PBXBuildFile; fileRef = 9643DA92218A65A900535D00 /* Pbkdf2.m */; };
+		9643DA96218A65B500535D00 /* RCTPbkdf2.m in Sources */ = {isa = PBXBuildFile; fileRef = 9643DA94218A65B500535D00 /* RCTPbkdf2.m */; };
+		9643DA99218B779400535D00 /* RCTRsa.m in Sources */ = {isa = PBXBuildFile; fileRef = 9643DA97218B779400535D00 /* RCTRsa.m */; };
+		9643DA9E218B77A200535D00 /* RsaFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 9643DA9C218B77A200535D00 /* RsaFormatter.m */; };
+		9643DA9F218B77A200535D00 /* Rsa.m in Sources */ = {isa = PBXBuildFile; fileRef = 9643DA9D218B77A200535D00 /* Rsa.m */; };
+		9668CE0421471DE0001D58C3 /* Aes.m in Sources */ = {isa = PBXBuildFile; fileRef = 9668CE0221471DDF001D58C3 /* Aes.m */; };
+		9668CE0721471DEA001D58C3 /* RCTAes.m in Sources */ = {isa = PBXBuildFile; fileRef = 9668CE0621471DEA001D58C3 /* RCTAes.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -19,7 +28,6 @@
 			dstPath = "include/$(PRODUCT_NAME)";
 			dstSubfolderSpec = 16;
 			files = (
-				32D980E11BE9F11C00FA27E5 /* RCTCrypto.h in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -27,10 +35,30 @@
 
 /* Begin PBXFileReference section */
 		32D980DD1BE9F11C00FA27E5 /* libRCTCrypto.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libRCTCrypto.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		32D980E01BE9F11C00FA27E5 /* RCTCrypto.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RCTCrypto.h; sourceTree = "<group>"; };
-		32D980E21BE9F11C00FA27E5 /* RCTCrypto.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RCTCrypto.m; sourceTree = "<group>"; };
-		9BE20B591E4E1A3700696172 /* AesCrypt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AesCrypt.h; sourceTree = "<group>"; };
-		9BE20B5A1E4E1A3700696172 /* AesCrypt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AesCrypt.m; sourceTree = "<group>"; };
+		9643DA82218A0E3800535D00 /* Sha.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sha.h; sourceTree = "<group>"; };
+		9643DA83218A0E3800535D00 /* Shared.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Shared.h; sourceTree = "<group>"; };
+		9643DA84218A0E3800535D00 /* Sha.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Sha.m; sourceTree = "<group>"; };
+		9643DA85218A0E3800535D00 /* Shared.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Shared.m; sourceTree = "<group>"; };
+		9643DA88218A0E4400535D00 /* RCTSha.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCTSha.h; sourceTree = "<group>"; };
+		9643DA89218A0E4400535D00 /* RCTSha.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCTSha.m; sourceTree = "<group>"; };
+		9643DA8B218A5C4800535D00 /* RCTHmac.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCTHmac.h; sourceTree = "<group>"; };
+		9643DA8C218A5C4800535D00 /* RCTHmac.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCTHmac.m; sourceTree = "<group>"; };
+		9643DA8E218A5C5200535D00 /* Hmac.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Hmac.h; sourceTree = "<group>"; };
+		9643DA8F218A5C5200535D00 /* Hmac.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Hmac.m; sourceTree = "<group>"; };
+		9643DA91218A65A900535D00 /* Pbkdf2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Pbkdf2.h; sourceTree = "<group>"; };
+		9643DA92218A65A900535D00 /* Pbkdf2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Pbkdf2.m; sourceTree = "<group>"; };
+		9643DA94218A65B500535D00 /* RCTPbkdf2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCTPbkdf2.m; sourceTree = "<group>"; };
+		9643DA95218A65B500535D00 /* RCTPbkdf2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCTPbkdf2.h; sourceTree = "<group>"; };
+		9643DA97218B779400535D00 /* RCTRsa.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCTRsa.m; sourceTree = "<group>"; };
+		9643DA98218B779400535D00 /* RCTRsa.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCTRsa.h; sourceTree = "<group>"; };
+		9643DA9A218B77A200535D00 /* RsaFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RsaFormatter.h; sourceTree = "<group>"; };
+		9643DA9B218B77A200535D00 /* Rsa.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Rsa.h; sourceTree = "<group>"; };
+		9643DA9C218B77A200535D00 /* RsaFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RsaFormatter.m; sourceTree = "<group>"; };
+		9643DA9D218B77A200535D00 /* Rsa.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Rsa.m; sourceTree = "<group>"; };
+		9668CE0221471DDF001D58C3 /* Aes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Aes.m; sourceTree = "<group>"; };
+		9668CE0321471DDF001D58C3 /* Aes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Aes.h; sourceTree = "<group>"; };
+		9668CE0521471DEA001D58C3 /* RCTAes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCTAes.h; sourceTree = "<group>"; };
+		9668CE0621471DEA001D58C3 /* RCTAes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCTAes.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,8 +91,16 @@
 		32D980DF1BE9F11C00FA27E5 /* RCTCrypto */ = {
 			isa = PBXGroup;
 			children = (
-				32D980E01BE9F11C00FA27E5 /* RCTCrypto.h */,
-				32D980E21BE9F11C00FA27E5 /* RCTCrypto.m */,
+				9643DA98218B779400535D00 /* RCTRsa.h */,
+				9643DA97218B779400535D00 /* RCTRsa.m */,
+				9643DA95218A65B500535D00 /* RCTPbkdf2.h */,
+				9643DA94218A65B500535D00 /* RCTPbkdf2.m */,
+				9643DA8B218A5C4800535D00 /* RCTHmac.h */,
+				9643DA8C218A5C4800535D00 /* RCTHmac.m */,
+				9643DA88218A0E4400535D00 /* RCTSha.h */,
+				9643DA89218A0E4400535D00 /* RCTSha.m */,
+				9668CE0521471DEA001D58C3 /* RCTAes.h */,
+				9668CE0621471DEA001D58C3 /* RCTAes.m */,
 				32D981161BE9F1B600FA27E5 /* lib */,
 			);
 			path = RCTCrypto;
@@ -73,8 +109,20 @@
 		32D981161BE9F1B600FA27E5 /* lib */ = {
 			isa = PBXGroup;
 			children = (
-				9BE20B591E4E1A3700696172 /* AesCrypt.h */,
-				9BE20B5A1E4E1A3700696172 /* AesCrypt.m */,
+				9643DA9B218B77A200535D00 /* Rsa.h */,
+				9643DA9D218B77A200535D00 /* Rsa.m */,
+				9643DA9A218B77A200535D00 /* RsaFormatter.h */,
+				9643DA9C218B77A200535D00 /* RsaFormatter.m */,
+				9643DA91218A65A900535D00 /* Pbkdf2.h */,
+				9643DA92218A65A900535D00 /* Pbkdf2.m */,
+				9643DA8E218A5C5200535D00 /* Hmac.h */,
+				9643DA8F218A5C5200535D00 /* Hmac.m */,
+				9643DA82218A0E3800535D00 /* Sha.h */,
+				9643DA84218A0E3800535D00 /* Sha.m */,
+				9643DA83218A0E3800535D00 /* Shared.h */,
+				9643DA85218A0E3800535D00 /* Shared.m */,
+				9668CE0321471DDF001D58C3 /* Aes.h */,
+				9668CE0221471DDF001D58C3 /* Aes.m */,
 			);
 			path = lib;
 			sourceTree = "<group>";
@@ -135,8 +183,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9BE20B5B1E4E1A3700696172 /* AesCrypt.m in Sources */,
-				32D980E31BE9F11C00FA27E5 /* RCTCrypto.m in Sources */,
+				9643DA8D218A5C4800535D00 /* RCTHmac.m in Sources */,
+				9643DA86218A0E3800535D00 /* Sha.m in Sources */,
+				9643DA99218B779400535D00 /* RCTRsa.m in Sources */,
+				9643DA8A218A0E4400535D00 /* RCTSha.m in Sources */,
+				9668CE0721471DEA001D58C3 /* RCTAes.m in Sources */,
+				9643DA93218A65A900535D00 /* Pbkdf2.m in Sources */,
+				9643DA9F218B77A200535D00 /* Rsa.m in Sources */,
+				9643DA96218A65B500535D00 /* RCTPbkdf2.m in Sources */,
+				9643DA90218A5C5200535D00 /* Hmac.m in Sources */,
+				9643DA9E218B77A200535D00 /* RsaFormatter.m in Sources */,
+				9643DA87218A0E3800535D00 /* Shared.m in Sources */,
+				9668CE0421471DE0001D58C3 /* Aes.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

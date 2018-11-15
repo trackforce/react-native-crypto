@@ -19,7 +19,8 @@
         "sha256",
         "sha512",
         "pbkdf2",
-        "hmac256"
+        "hmac256",
+        "rsa"
     ],
     "homepage": "https://github.com/trackforce/react-native-crypto",
     "bugs": {
