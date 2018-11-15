@@ -58,9 +58,9 @@ public class RCTPbkdf2 extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public void hash(String pwd, String salt, Integer iterations, Integer keyLen, String hash, Promise promise) {
+    public void hash(String pwd, String saltBase64, Integer iterations, Integer keyLen, String hash, Promise promise) {
         try {
-            String strs = pbkdf2(pwd, salt, iterations, keyLen, hash);
+            String strs = pbkdf2(pwd, saltBase64, iterations, keyLen, hash);
             promise.resolve(strs);
         } catch (Exception e) {
             promise.reject("-1", e.getMessage());
@@ -88,7 +88,8 @@ public class RCTPbkdf2 extends ReactContextBaseJavaModule {
         ExtendedDigest alg = algMap.get(hash);
 
         PBEParametersGenerator gen = new PKCS5S2ParametersGenerator(alg);
-        gen.init(pwd.getBytes(StandardCharsets.UTF_8), salt.getBytes(StandardCharsets.UTF_8), iterations);
+        byte[] saltBytes = Base64.decode(salt, Base64.DEFAULT);
+        gen.init(pwd.getBytes(StandardCharsets.UTF_8), saltBytes, iterations);
         byte[] key = ((KeyParameter) gen.generateDerivedParameters(keyLen * 8)).getKey();
         return bytesToHex(key);
     }

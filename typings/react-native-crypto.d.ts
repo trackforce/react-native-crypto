@@ -23,7 +23,7 @@ declare module '@trackforce/react-native-crypto' {
   }
 
   namespace Pbkdf2 {
-    export function hash(password: string, salt: string, iterations: number, keyLen: number, hash: 'SHA1' | 'SHA224' | 'SHA256' | 'SHA384' | 'SHA512'): Promise<string>;
+    export function hash(password: string, saltBase64: string, iterations: number, keyLen: number, hash: 'SHA1' | 'SHA224' | 'SHA256' | 'SHA384' | 'SHA512'): Promise<string>;
   }
 
 	namespace Rsa {

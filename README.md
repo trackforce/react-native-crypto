@@ -61,11 +61,11 @@ protected List<ReactPackage> getPackages() {
 ## Local development
 
 1. `yarn install`
-2. `yarn link`
-3. `cd example`
-4. `yarn install`
-5. `yarn link @trackforce/react-native-crypto`
-6. `yarn run-ios`
+2. `cd example`
+3. `yarn install`
+4. `yarn run-ios`
+
+Note: React native doesn't support [Symlinks](https://github.com/facebook/metro/issues/1). See [Stackoverflow] (https://stackoverflow.com/questions/44061155/react-native-npm-link-local-dependency-unable-to-resolve-module).
 
 
 ## Usage
