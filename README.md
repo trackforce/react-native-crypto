@@ -3,6 +3,12 @@
 # React Native Crypto
 Common encryption/decryption for react-native
 
+## Features
+- [x] RSA
+- [x] AES
+- [x] Hmac
+- [x] Pbkdf2
+- [x] Sha
 
 ## Installation
 ```sh
@@ -66,7 +72,6 @@ protected List<ReactPackage> getPackages() {
 4. `react-native run-ios`
 
 Note: React native doesn't support [Symlinks](https://github.com/facebook/metro/issues/1). See [Stackoverflow](https://stackoverflow.com/questions/44061155/react-native-npm-link-local-dependency-unable-to-resolve-module).
-
 
 ## Usage
 

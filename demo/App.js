@@ -6,24 +6,24 @@ export default class App extends Component {
 
   async componentDidMount() {
     try {
-      // const iterations = 4096;
-      // const keyInBytes = 32;
-      // const message = 'data to encrypt';
-      // const key = await Pbkdf2.hash('a0', 'a1b4efst', iterations, keyInBytes, 'SHA1');
-      // console.log(`pbkdf2 key: ${key}`);
+      const iterations = 4096;
+      const keyInBytes = 32;
+      const message = 'data to encrypt';
+      const key = await Pbkdf2.hash('a0', 'a1b4efst', iterations, keyInBytes, 'SHA1');
+      console.log(`pbkdf2 key: ${key}`);
 
-      // const iv = null; // or base 64 encoded 16 bytes random string
-      // const aesEncryptedMessage = await Aes.encrypt(message, key, iv);
-      // console.log(`aes Encrypt: ${aesEncryptedMessage}`);
+      const iv = null; // or base 64 encoded 16 bytes random string
+      const aesEncryptedMessage = await Aes.encrypt(message, key, iv);
+      console.log(`aes Encrypt: ${aesEncryptedMessage}`);
 
-      // const aesDecryptedMessage = await Aes.decrypt(aesEncryptedMessage, key, iv);
-      // console.log(`aes Decrypt: ${aesDecryptedMessage}`);
+      const aesDecryptedMessage = await Aes.decrypt(aesEncryptedMessage, key, iv);
+      console.log(`aes Decrypt: ${aesDecryptedMessage}`);
 
-      // const hmac256Hash = await Hmac.hmac256(message, key);
-      // console.log(`hmac256: ${hmac256Hash}`);
+      const hmac256Hash = await Hmac.hmac256(message, key);
+      console.log(`hmac256: ${hmac256Hash}`);
 
-      // const sha1hash = await Sha.sha1("test");
-      // console.log(`sha1: ${sha1hash}`);
+      const sha1hash = await Sha.sha1("test");
+      console.log(`sha1: ${sha1hash}`);
 
       // const rsaKeys = await Rsa.generateKeys(4096);
       // console.log('4096 private:', rsaKeys.private);
