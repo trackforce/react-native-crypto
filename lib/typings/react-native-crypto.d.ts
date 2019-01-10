@@ -29,9 +29,13 @@ declare module '@trackforce/react-native-crypto' {
   namespace Rsa {
     export function generateKeys(keySize: number): Promise<KeyPair>;
     export function encrypt(data: string, key: string): Promise<string>;
+    export function encrypt64(data64: string, key: string): Promise<string>;
     export function decrypt(data: string, key: string): Promise<string>;
+    export function decrypt64(data64: string, key: string): Promise<string>;
     export function sign(data: string, key: string, hash: 'Raw' | 'SHA1' | 'SHA224' | 'SHA256' | 'SHA384' | 'SHA512'): Promise<string>;
-    export function verify(data: string, secretToVerify: string, key: string, hash: 'Raw' | 'SHA1' | 'SHA224' | 'SHA256' | 'SHA384' | 'SHA512'): Promise<boolean>;
+    export function sign64(data64: string, key: string, hash: 'Raw' | 'SHA1' | 'SHA224' | 'SHA256' | 'SHA384' | 'SHA512'): Promise<string>;
+    export function verify(signature: string, data: string, key: string, hash: 'Raw' | 'SHA1' | 'SHA224' | 'SHA256' | 'SHA384' | 'SHA512'): Promise<boolean>;
+    export function verify64(signature64: string, data64: string, key: string, hash: 'Raw' | 'SHA1' | 'SHA224' | 'SHA256' | 'SHA384' | 'SHA512'): Promise<boolean>;
   }
 
   export { Aes, Sha, Hmac, Pbkdf2, Rsa }
