@@ -1,8 +1,5 @@
-rootProject.name = 'example'
-include ':@trackforce/react-native-crypto'
-project(':@trackforce/react-native-crypto').projectDir = new File(rootProject.projectDir, '../node_modules/@trackforce/react-native-crypto/android')
+rootProject.name = 'example2'
+include ':@trackforce_react-native-crypto'
+project(':@trackforce_react-native-crypto').projectDir = new File(rootProject.projectDir, '../node_modules/@trackforce/react-native-crypto/android')
 
 include ':app'
-
-include ':@trackforce/react-native-crypto' 
-project(':@trackforce/react-native-crypto').projectDir = new File(rootProject.projectDir, '../node_modules/@trackforce/react-native-crypto/android')

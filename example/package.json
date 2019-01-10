@@ -1,23 +1,23 @@
 {
-  "name": "example",
+  "name": "example2",
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "start": "node node_modules/react-native/local-cli/cli.js start --reset-cache",
     "run-ios": "node node_modules/react-native/local-cli/cli.js run-ios",
-    "run-android": "node node_modules/react-native/local-cli/cli.js run-android",
     "test": "jest"
   },
   "dependencies": {
     "@trackforce/react-native-crypto": "file:..",
-    "react": "16.4.1",
-    "react-native": "0.55.4",
-    "tslib": "^1.9.3"
+    "react": "16.6.3",
+    "react-native": "0.57.8"
   },
   "devDependencies": {
-    "babel-preset-react-native": "^4.0.0",
-    "jest": "^23.6.0",
-    "react-native-typescript-transformer": "^1.2.10",
-    "typescript": "^3.0.3"
+    "babel-jest": "23.6.0",
+    "jest": "23.6.0",
+    "metro-react-native-babel-preset": "0.51.1",
+    "react-test-renderer": "16.6.3"
+  },
+  "jest": {
+    "preset": "react-native"
   }
 }
