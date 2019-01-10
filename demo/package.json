@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "@trackforce/react-native-crypto": "file:../lib",
+    "buffer": "^5.2.1",
     "react": "16.6.3",
     "react-native": "0.57.8"
   },
