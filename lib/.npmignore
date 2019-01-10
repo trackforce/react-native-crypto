@@ -42,4 +42,4 @@ local.properties
 
 
 ### npmignore ###
-example/
+example

@@ -3,11 +3,10 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "run-ios": "node node_modules/react-native/local-cli/cli.js run-ios",
+    "run-ios": "react-native run-ios",
     "test": "jest"
   },
   "dependencies": {
-    "@trackforce/react-native-crypto": "file:..",
     "react": "16.6.3",
     "react-native": "0.57.8"
   },
