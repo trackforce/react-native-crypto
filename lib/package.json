@@ -1,6 +1,6 @@
 {
     "name": "@trackforce/react-native-crypto",
-    "version": "0.0.7",
+    "version": "0.0.8",
     "description": "React-native crypto module",
     "main": "index.js",
     "types": "./typings/react-native-crypto.d.ts",
