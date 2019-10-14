@@ -1,13 +1,16 @@
 
+require 'json'
+package_json = JSON.parse(File.read('package.json'))
+
 Pod::Spec.new do |s|
   s.name          = 'react-native-crypto'
-  s.version       = '0.0.1'
-  s.summary       = ''
-  s.author        = "trackforce"
-  s.license       = 'MIT'
+  s.version       = package_json["version"]
+  s.summary       = package_json["description"]
+  s.author        = package_json["author"]
+  s.license       = package_json["license"]
   s.requires_arc  = true
-  s.homepage      = "https://github.com/trackforce/react-native-crypto"
-  s.source        = { :git => 'https://github.com/trackforce/react-native-crypto' }
+  s.homepage      = package_json["homepage"]
+  s.source        = { :git => "#{package_json["repository"]["url"]}" }
   s.platform      = :ios, '8.0'
   s.source_files  = "ios/**/*.{h,m}"
 
