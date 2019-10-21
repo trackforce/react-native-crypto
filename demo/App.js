@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import { Aes, Sha, Hmac, Pbkdf2, Rsa } from '@trackforce/react-native-crypto';
-import { Buffer } from 'buffer';
+import { StyleSheet, Text, View } from "react-native";
+import { Aes, Sha, Hmac, Pbkdf2, Rsa } from "@trackforce/react-native-crypto";
+import { Buffer } from "buffer";
 
 export default class App extends Component {
 
