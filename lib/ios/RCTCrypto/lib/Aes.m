@@ -6,6 +6,7 @@
 #import "Aes.h"
 
 NSString const *kInitVector = @"pleaseginko12345";
+size_t const kKeySize = kCCKeySizeAES128;
 
 @implementation Aes
 

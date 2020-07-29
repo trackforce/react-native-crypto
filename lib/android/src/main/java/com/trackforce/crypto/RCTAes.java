@@ -130,6 +130,7 @@ public class RCTAes extends ReactContextBaseJavaModule {
         System.out.println("encrypted string: " + encryptedStr);
         return encryptedStr;
     }
+    
 
     private static String decrypt(String ciphertext, String hexKey, String hexIv) throws Exception {
         if(ciphertext == null || ciphertext.length() == 0) {
