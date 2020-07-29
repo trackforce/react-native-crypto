@@ -116,18 +116,19 @@ public class RCTAes extends ReactContextBaseJavaModule {
 
     final static IvParameterSpec emptyIvSpec = new IvParameterSpec(new byte[] {0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00});
 
-    private static String encrypt(String text, String hexKey, String hexIv) throws Exception {
-        if (text == null || text.length() == 0) {
+    private static String encrypt(String value, String key, String initVector) throws Exception {
+        if (value == null || value.length() == 0) {
             return null;
         }
-
-        byte[] key = Hex.decode(hexKey);
-        SecretKey secretKey = new SecretKeySpec(key, KEY_ALGORITHM);
-
-        Cipher cipher = Cipher.getInstance(CIPHER_ALGORITHM);
-        cipher.init(Cipher.ENCRYPT_MODE, secretKey, hexIv == null ? emptyIvSpec : new IvParameterSpec(Hex.decode(hexIv)));
-        byte[] encrypted = cipher.doFinal(text.getBytes("UTF-8"));
-        return Base64.encodeToString(encrypted, Base64.NO_WRAP);
+        IvParameterSpec iv = new IvParameterSpec(initVector.getBytes("UTF-8"));
+        SecretKeySpec skeySpec = new SecretKeySpec(key.getBytes("UTF-8"), "AES");
+        Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5PADDING");
+        cipher.init(Cipher.ENCRYPT_MODE, skeySpec, iv);
+        byte[] encrypted = cipher.doFinal(value.getBytes());
+        String encryptedStr = new String(Base64.encode(encrypted, Base64.DEFAULT));
+        encryptedStr = encryptedStr.trim();
+        System.out.println("encrypted string: " + encryptedStr);
+        return encryptedStr;
     }
 
     private static String decrypt(String ciphertext, String hexKey, String hexIv) throws Exception {
