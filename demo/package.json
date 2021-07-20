@@ -12,7 +12,7 @@
     "@trackforce/react-native-crypto": "file:../lib",
     "buffer": "^5.4.3",
     "react": "16.10.2",
-    "react-native": "0.61.2"
+    "react-native": "0.62.3"
   },
   "devDependencies": {
     "@babel/core": "^7.6.2",
